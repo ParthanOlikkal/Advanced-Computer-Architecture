@@ -1,0 +1,39 @@
+        Instruction             FT      ID      EX      WB      RAW     WAR     WAW     Struct
+GG:     L.D    F1,  4(R4)       6       7       15      16      N       N       N       N
+        L.D    F2,  8(R5)       7       8       17      18      N       N       N       Y
+        ADD.D  F4,  F6,  F2     8       18      22      23      Y       N       N       N
+        SUB.D  F5,  F7,  F1     18      19      23      24      N       N       N       N
+        MUL.D  F6,  F1, F5      24      25      31      32      N       N       N       N
+        ADD.D  F7,  F2,  F6     25      32      36      37      Y       N       N       N
+        ADD.D  F6,  F1,  F7     32      37      41      42      Y       N       N       N
+        S.D    F6,  0(R8)       37      42      51      52      Y       N       N       Y
+        DADDI  R4,  R4,  4      43      44      52      53      N       N       N       Y
+        DADDI  R5,  R5,  4      44      51      53      54      N       N       N       Y
+        DADDI  R8,  R8,  8      51      52      54      55      N       N       N       Y
+        DSUB   R1,  R1,  R2     52      53      55      56      N       N       N       N
+        BNE    R1,  R3,  GG     58      59                      N       N       N       N
+        HLT                     59                                                      
+GG:     L.D    F1,  4(R4)       60      61      64      70      N       N       N       N
+        L.D    F2,  8(R5)       61      62      71      72      N       N       N       Y
+        ADD.D  F4,  F6,  F2     62      72      76      77      Y       N       N       N
+        SUB.D  F5,  F7,  F1     72      73      77      78      N       N       N       N
+        MUL.D  F6,  F1, F5      73      78      84      85      Y       N       N       N
+        ADD.D  F7,  F2,  F6     78      85      89      90      Y       N       N       N
+        ADD.D  F6,  F1,  F7     85      90      94      95      Y       N       N       N
+        S.D    F6,  0(R8)       90      95      98      99      Y       N       N       N
+        DADDI  R4,  R4,  4      95      97      99      100     N       N       N       Y
+        DADDI  R5,  R5,  4      97      98      100     101     N       N       N       Y
+        DADDI  R8,  R8,  8      98      99      101     102     N       N       N       Y
+        DSUB   R1,  R1,  R2     99      100     102     103     N       N       N       N
+        BNE    R1,  R3,  GG     100     103                     Y       N       N       N
+        HLT                     103     104                     N       N       N       N
+        HLT                     104                                                     
+                                                 
+
+Total number of access requests for instruction cache: 29
+
+Number of instruction cache hits: 25
+
+Total number of access requests for data cache: 12
+
+Number of data cache hits: 9
